@@ -16,7 +16,7 @@
                 <Button x:Name="Btn_CompareTwoFolder" Content="比较两个目录" Margin="10,10,10,0" VerticalAlignment="Top" Click="Btn_CompareTwoFolder_Click"/>
                 <Button x:Name="Btn_MakeCompareList" Content="生成比较清单" Margin="10,38.4,10,0" VerticalAlignment="Top" Click="Btn_MakeCompareList_Click"/>
                 <Button x:Name="Btn_CompareFromList" Content="从清单进行比较" Margin="10,66.8,10,0" VerticalAlignment="Top" Click="Btn_CompareFromList_Click"/>
-                <Button x:Name="Btn_CompareTwoList" Content="比较两个清单" Margin="10,95.2,10,0" VerticalAlignment="Top"/>
+                <Button x:Name="Btn_CompareTwoList" Content="比较两个清单" Margin="10,95.2,10,0" VerticalAlignment="Top" Click="Btn_CompareTwoList_Click"/>
                 <Label Content="多线程倍率：" HorizontalAlignment="Left" Margin="10,0,0,35" VerticalAlignment="Bottom" Padding="0"/>
                 <TextBox x:Name="Tbx_MTGain" Height="20" Margin="10,0,10,10" TextWrapping="Wrap" Text="2" VerticalAlignment="Bottom" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
             </Grid>

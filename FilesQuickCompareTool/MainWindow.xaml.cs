@@ -262,13 +262,32 @@ namespace FilesQuickCompareTool
             {
                 var ofd = new OpenFileDialog();
                 ofd.Title = "请选择一个清单文件...";
-                ofd.Filter = "清单文件(.txt)|*.txt";
+                ofd.Filter = "清单文件|*.txt";
                 ofd.ShowDialog();
 
                 if (ofd.FileName == null || ofd.FileName == "" || Tbx_FolderPath.Text == "")
                     return;
 
+                var currTime = DateTime.Now;
 
+                var arr = File.ReadAllLines(ofd.FileName);
+                var dict2 = new Dictionary<string, string>();
+                foreach (var line in arr)
+                {
+                    var _arr = line.Split(',');
+                    dict2.Add(_arr[0], _arr[1]);
+                }
+
+                FileList.Clear();
+                GetFolderFileList(Tbx_FolderPath.Text);
+                var dict1 = CalcFileList(Tbx_FolderPath.Text);
+
+                var dt = CompareTwoSource(dict1, dict2, Tbx_FolderPath.Text, $@"清单文件:{ofd.FileName}");
+
+                var endTime = DateTime.Now;
+
+                dataGrid_Main.ItemsSource = dt.DefaultView;
+                MessageBox.Show($@"目录比对完成，共计比对{dict1.Count + dict2.Count}个文件，耗时{Math.Round((endTime - currTime).TotalSeconds)}秒！");
             }
             catch (Exception ex)
             {
@@ -276,7 +295,52 @@ namespace FilesQuickCompareTool
             }
         }
 
-        #endregion
+        /// <summary>
+        /// 比较两个清单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_CompareTwoList_Click(object sender, RoutedEventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.Title = "请选择第一个清单文件...";
+            ofd.Filter = "清单文件|*.txt";
+            ofd.ShowDialog();
 
+            var ofd_2nd = new OpenFileDialog();
+            ofd_2nd.Title = "请选择第二个清单文件...";
+            ofd_2nd.Filter = "清单文件|*.txt";
+            ofd_2nd.ShowDialog();
+
+            if (ofd.FileName == null || ofd.FileName == "" || ofd_2nd.FileName == null || ofd_2nd.FileName == "")
+                return;
+
+            var currTime = DateTime.Now;
+
+            var arr = File.ReadAllLines(ofd.FileName);
+            var dict1 = new Dictionary<string, string>();
+            foreach (var line in arr)
+            {
+                var _arr = line.Split(',');
+                dict1.Add(_arr[0], _arr[1]);
+            }
+
+            var arr2 = File.ReadAllLines(ofd_2nd.FileName);
+            var dict2 = new Dictionary<string, string>();
+            foreach (var line in arr2)
+            {
+                var _arr = line.Split(',');
+                dict2.Add(_arr[0], _arr[1]);
+            }
+
+            var dt = CompareTwoSource(dict1, dict2, $@"清单文件:{ofd.FileName}", $@"清单文件:{ofd_2nd.FileName}");
+
+            var endTime = DateTime.Now;
+
+            dataGrid_Main.ItemsSource = dt.DefaultView;
+            MessageBox.Show($@"目录比对完成，共计比对{dict1.Count + dict2.Count}个文件，耗时{Math.Round((endTime - currTime).TotalSeconds)}秒！");
+        }
+
+        #endregion
     }
 }
