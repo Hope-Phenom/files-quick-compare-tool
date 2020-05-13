@@ -13,9 +13,9 @@
         <Button x:Name="Btn_SelectFolder_2nd" Content="选择目录" HorizontalAlignment="Right" Margin="0,35,10,0" VerticalAlignment="Top" Width="75" Height="20" Click="Btn_SelectFolder_Click"/>
         <GroupBox Header="操作台" Margin="10,60,0,10" HorizontalAlignment="Left" Width="128.8">
             <Grid Margin="0">
-                <Button x:Name="Btn_CompareTwoFolder" Content="比较两个目录" Margin="10,10,10,0" VerticalAlignment="Top"/>
+                <Button x:Name="Btn_CompareTwoFolder" Content="比较两个目录" Margin="10,10,10,0" VerticalAlignment="Top" Click="Btn_CompareTwoFolder_Click"/>
                 <Button x:Name="Btn_MakeCompareList" Content="生成比较清单" Margin="10,38.4,10,0" VerticalAlignment="Top" Click="Btn_MakeCompareList_Click"/>
-                <Button x:Name="Btn_CompareFromList" Content="从清单进行比较" Margin="10,66.8,10,0" VerticalAlignment="Top"/>
+                <Button x:Name="Btn_CompareFromList" Content="从清单进行比较" Margin="10,66.8,10,0" VerticalAlignment="Top" Click="Btn_CompareFromList_Click"/>
                 <Button x:Name="Btn_CompareTwoList" Content="比较两个清单" Margin="10,95.2,10,0" VerticalAlignment="Top"/>
                 <Label Content="多线程倍率：" HorizontalAlignment="Left" Margin="10,0,0,35" VerticalAlignment="Bottom" Padding="0"/>
                 <TextBox x:Name="Tbx_MTGain" Height="20" Margin="10,0,10,10" TextWrapping="Wrap" Text="2" VerticalAlignment="Bottom" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
@@ -23,13 +23,7 @@
         </GroupBox>
         <GroupBox Header="展示区" Margin="143.8,60,10,10">
             <Grid Margin="0">
-                <ListView x:Name="LsView_Main" Margin="0">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <DataGrid x:Name="dataGrid_Main" Margin="0"/>
             </Grid>
         </GroupBox>
     </Grid>
