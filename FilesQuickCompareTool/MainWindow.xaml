@@ -21,9 +21,15 @@
                 <TextBox x:Name="Tbx_MTGain" Height="20" Margin="10,0,10,10" TextWrapping="Wrap" Text="2" VerticalAlignment="Bottom" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="展示区" Margin="143.8,60,10,10">
+        <GroupBox Header="展示区" Margin="143.8,60,10,100">
             <Grid Margin="0">
                 <DataGrid x:Name="dataGrid_Main" Margin="0"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="日志区" Margin="144,0,10,10" Height="90" VerticalAlignment="Bottom">
+            <Grid Margin="0">
+                <TextBox Name="Tbx_Info" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True"
+                         MaxLines="1000" />
             </Grid>
         </GroupBox>
     </Grid>
